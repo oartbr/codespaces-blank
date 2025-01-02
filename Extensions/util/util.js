@@ -24,12 +24,24 @@ class Storage{
     }
 
     get(id){
-      return this.content[id];
+      const oContent = JSON.parse(this.content[id]);
+      const sContent = this.content[id];
+      return (typeof oContent == 'object') ? oContent : sContent;
     }
 
     set(id, content){
       this.load();
       this.content[id] = content;
       this.save();
+    }
+
+    // Function to encode a string to Base64
+    encodeId(text) {
+      return Buffer.from(text).toString('base64');
+    }
+
+    // Function to decode a Base64 string
+    decodeId(encodedText) {
+      return Buffer.from(encodedText, 'base64').toString('utf8');
     }
   }
