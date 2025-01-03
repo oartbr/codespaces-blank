@@ -37,12 +37,11 @@ class Storage{
 
     // Function to encode a string to Base64
     encodeId(text) {
-      const endoded = btoa(text);
-      return endoded.replace(/=/g, '');
+      return btoa(text);
     }
 
     // Function to decode a Base64 string
     decodeId(encodedText) {
-      return atob(encodedText + "=");
+      return atob(encodedText);
     }
   }
